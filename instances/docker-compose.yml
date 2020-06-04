@@ -2,7 +2,9 @@ version: '3'
 
 services:
 
-  zammad-proxy:
+  # Note: the name must be the same as used by ./zammad/docker-compose
+  # as it exists to override the properties in it
+  zammad-nginx:
     networks:
       - web
       - proxy_2_zammad
