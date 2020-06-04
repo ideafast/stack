@@ -6,9 +6,6 @@ services:
     networks:
       - web
       - proxy_2_zammad
-    labels:
-      ???
-
 
 networks:
   proxy_2_zammad:
