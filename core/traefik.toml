@@ -1,0 +1,6 @@
+[entryPoints]
+  [entryPoints.web]
+    address = ":80"
+
+[providers.docker]
+  network = "web"

@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+
+  zammad-nginx:
+    networks:
+      - web
+      - proxy_2_zammad
+
+networks:
+  proxy_2_zammad:
+    external:
+      name: proxy_2_apps
