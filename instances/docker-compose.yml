@@ -1,15 +1,16 @@
-version: '3'
-
-services:
-
-  # Note: the name must be the same as used by ./zammad/docker-compose
-  # as it exists to override the properties in it
-  zammad-nginx:
-    networks:
-      - web
-      - proxy_2_zammad
+version: '2'
 
 networks:
-  proxy_2_zammad:
-    external:
-      name: proxy_2_apps
+  web:
+    external: true
+services:
+  zammad-nginx:
+    environment:
+      - VIRTUAL_HOST=support.localhost
+    networks:
+      - default
+      - web
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=web"
+      - "traefik.http.routers.zammad.rule=Host(`support.localhost`)"
