@@ -22,6 +22,9 @@ docker network create web
 
 cd core
 
+# If no .env exists copy/edit zammad's as a base. see /instances/.env.example
+cp zammad/.env .env
+
 docker-compose up -d
 
 cd ../instances

@@ -15,5 +15,3 @@ services:
       - "traefik.enable=true"
       - "traefik.docker.network=web"
       - "traefik.http.routers.zammad.rule=Host(`support.localhost`)"
-    env_file:
-      - ../zammad.env
