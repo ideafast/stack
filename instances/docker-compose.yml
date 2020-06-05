@@ -3,6 +3,7 @@ version: '2'
 networks:
   web:
     external: true
+
 services:
   zammad-nginx:
     environment:
@@ -14,3 +15,5 @@ services:
       - "traefik.enable=true"
       - "traefik.docker.network=web"
       - "traefik.http.routers.zammad.rule=Host(`support.localhost`)"
+    env_file:
+      - ../zammad.env

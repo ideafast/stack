@@ -5,6 +5,18 @@ There are a couple of services defined here:
 - [core](./core) is the base services, e.g. reverse proxy.
 - [instances](./instances) are the instances of services we run, e.g. zammad.
 
+
+[Zammad](https://github.com/zammad/zammad-docker-compose) is used as a
+submodule to simplify working with their compose file. When you first download
+the repo the `/instances/zammad` folder will be empty and you'll need to
+initialise it:
+
+```
+git submodule update --init --recursive
+```
+
+## Deploying Stack
+
 ```
 docker network create web
 
@@ -21,4 +33,3 @@ docker-compose -f ./zammad/docker-compose.yml  -f docker-compose.yml up -d
 
 - A reverse proxy is used to override `zammad-nginx` to expose the zammad
   servers to traefik. See the [docker-compose.yml](./instances/docker-compose.yml).
-- A `.env` inside `/instances/zammad` overrides zammads default settings.
