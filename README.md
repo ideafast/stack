@@ -20,14 +20,16 @@ git submodule update --init --recursive
 ```
 docker network create web
 
-cd core
+# Starting core services: traefik, sql, etc.
+
+cd core && docker-compose up -d
+
+# Start instances of services: zammad, snipeit, etc.
+
+cd ../instances
 
 # If no .env exists copy/edit zammad's as a base. see /instances/.env.example
 cp zammad/.env .env
-
-docker-compose up -d
-
-cd ../instances
 
 docker-compose -f ./zammad/docker-compose.yml  -f docker-compose.yml up -d
 ```
