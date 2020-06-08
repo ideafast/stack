@@ -19,6 +19,7 @@ git submodule update --init --recursive
 
 ```
 docker network create web
+docker network create database
 
 # Starting core services: traefik, sql, etc.
 

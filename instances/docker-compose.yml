@@ -22,6 +22,7 @@ services:
     ports:
       - "5432:5432"
     networks:
+      - default
       - database
     labels:
       - "traefik.enable=true"
