@@ -2,5 +2,8 @@
   [entryPoints.web]
     address = ":80"
 
+  [entryPoints.postgres]
+    address = ":5432"
+
 [providers.docker]
   network = "web"

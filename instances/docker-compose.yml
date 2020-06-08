@@ -3,6 +3,8 @@ version: '2'
 networks:
   web:
     external: true
+  database:
+    external: true
 
 services:
   zammad-nginx:
@@ -15,3 +17,12 @@ services:
       - "traefik.enable=true"
       - "traefik.docker.network=web"
       - "traefik.http.routers.zammad.rule=Host(`support.localhost`)"
+
+  zammad-postgresql:
+    ports:
+      - "5432:5432"
+    networks:
+      - database
+    labels:
+      - "traefik.enable=true"
+      - "traefik.tcp.routers.postgres.entrypoints=postgres"
