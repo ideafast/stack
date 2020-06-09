@@ -1,2 +1,4 @@
 *.env
 *.sw*
+*.json
+core/acme.json
