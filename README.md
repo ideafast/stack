@@ -23,7 +23,14 @@ docker network create database
 
 # Starting core services: traefik, sql, etc.
 
-cd core && docker-compose up -d
+cd core
+
+# Prepare file for certification via letsencrypt
+
+touch acme.json
+chmod 600 acme.json
+
+docker-compose up -d
 
 # Start instances of services: zammad, snipeit, etc.
 
