@@ -17,6 +17,9 @@ services:
       - "traefik.enable=true"
       - "traefik.docker.network=web"
       - "traefik.http.routers.zammad.rule=Host(`support.localhost`)"
+      - "traefik.http.routers.zammad.entrypoints=websecure"
+      - "traefik.http.routers.zammad.tls=true"
+      - "traefik.http.routers.zammad.tls.certresolver=leresolver"
 
   zammad-postgresql:
     ports:

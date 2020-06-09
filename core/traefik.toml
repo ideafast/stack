@@ -2,8 +2,20 @@
   [entryPoints.web]
     address = ":80"
 
+  [entryPoints.web.http.redirections.entryPoint]
+    to = "websecure"
+    scheme = "https"
+
+  [entryPoints.websecure]
+    address = ":443"
+
   [entryPoints.postgres]
     address = ":5432"
+
+[certificatesResolvers.leresolver.acme]
+  email = "support@ideafast.eu"
+  storage = "acme.json"
+  [certificatesResolvers.leresolver.acme.tlsChallenge]
 
 [providers.docker]
   network = "web"
