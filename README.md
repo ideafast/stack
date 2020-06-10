@@ -40,6 +40,18 @@ cd ../instances
 cp zammad/.env .env
 
 docker-compose -f ./zammad/docker-compose.yml  -f docker-compose.yml up -d
+
+cd snipe-it/
+
+cp .env.example .env
+
+docker pull snipe/snipe-it:v4.9.2
+
+docker run --rm snipe/snipe-it:v4.9.2
+
+# Replace APP_KEY in .env with outputted value
+
+docker-compose up
 ```
 
 ### Notes
