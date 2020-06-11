@@ -51,7 +51,7 @@ docker run --rm snipe/snipe-it:v4.9.2
 
 # Replace APP_KEY in .env with outputted value
 
-docker-compose up
+docker-compose up -d
 ```
 
 ### Notes
