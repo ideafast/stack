@@ -3,7 +3,6 @@ version: '3'
 services:
 
   snipe-mysql:
-    container_name: snipe-mysql
     image: mysql:5.6
     env_file:
       - ./.snipeit.env
