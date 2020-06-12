@@ -43,7 +43,7 @@ docker-compose -f ./zammad/docker-compose.yml  -f docker-compose.yml up -d
 
 cd snipe-it/
 
-cp .env.example .env
+cp .snipeit.env.example .snipeit.env
 
 docker pull snipe/snipe-it:v4.9.2
 
