@@ -1,9 +1,17 @@
 version: '3'
 
-services:
+networks:
+  web:
+    external: true
+  database:
+    external: true
 
+services:
   snipe-mysql:
     image: mysql:5.6
+    networks:
+      - default
+      - database
     env_file:
       - ./.snipeit.env
     volumes:
@@ -14,6 +22,9 @@ services:
 
   snipeit:
     image: snipe/snipe-it:v4.9.2
+    networks:
+      - web
+      - database
     env_file:
       - ./.snipeit.env
     ports:
