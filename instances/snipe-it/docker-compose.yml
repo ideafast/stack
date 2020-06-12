@@ -8,12 +8,12 @@ services:
     env_file:
       - ./.snipeit.env
     volumes:
-      - snipesql-vol:/var/lib/mysql
+      - snipe_data:/var/lib/mysql
     command: --default-authentication-plugin=mysql_native_password
     expose:
       - "3306"
 
-  snipe-it:
+  snipeit:
     image: snipe/snipe-it:v4.9.2
     env_file:
       - ./.snipeit.env
@@ -23,4 +23,4 @@ services:
       - snipe-mysql
 
 volumes:
-  snipesql-vol:
+  snipe_data:
