@@ -25,6 +25,7 @@ services:
     networks:
       - web
       - database
+    container_name: snipeit
     env_file:
       - ./.snipeit.env
     depends_on:

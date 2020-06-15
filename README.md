@@ -49,7 +49,7 @@ docker pull snipe/snipe-it:v4.9.2
 
 docker-compose up -d
 
-docker exec -it snipe-it_snipeit_1 sh (or whatever container name)
+docker exec -it snipeit sh
 
 php artisan key:generate
 
