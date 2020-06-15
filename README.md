@@ -47,7 +47,11 @@ cp .snipeit.env.example .snipeit.env
 
 docker pull snipe/snipe-it:v4.9.2
 
-docker run --rm snipe/snipe-it:v4.9.2
+docker-compose up -d
+
+docker exec -it snipe-it_snipeit_1 sh (or whatever container name)
+
+php artisan key:generate
 
 # Replace APP_KEY in .env with outputted value
 
