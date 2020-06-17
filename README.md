@@ -58,6 +58,11 @@ php artisan key:generate
 docker-compose up -d
 ```
 
+## Deploying/Testing Locally
+
+1. Disable HTTP/S redirects and SSL by temporarily [deleting the associated traefik config](https://github.com/ideafast/stack/blob/master/core/traefik.toml#L5-L10).
+2. Update traefik hosts, e.g. from `inventory.ideafast.eu` to `inventory.localhost` [see here](https://github.com/ideafast/stack/blob/master/instances/docker-compose.yml#L19).
+
 ### Notes
 
 - A reverse proxy is used to override `zammad-nginx` to expose the zammad

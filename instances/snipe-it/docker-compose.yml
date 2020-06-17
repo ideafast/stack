@@ -35,7 +35,7 @@ services:
       - snipe-mysql
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.snipeit.rule=Host(`inventory.localhost`)"
+      - "traefik.http.routers.snipeit.rule=Host(`inventory.ideafast.eu`)"
       - "traefik.http.routers.snipeit.entrypoints=websecure"
       - "traefik.http.routers.snipeit.tls=true"
       - "traefik.http.routers.snipeit.tls.certresolver=leresolver"
