@@ -1,0 +1,44 @@
+version: '3'
+
+networks:
+  web:
+    external: true
+  database:
+    external: true
+
+services:
+  snipe-mysql:
+    container_name: snipe-mysql
+    image: mysql:5.6
+    networks:
+      - database
+    env_file:
+      - .snipeit.env
+    volumes:
+      - snipe_data:/var/lib/mysql
+    command: --default-authentication-plugin=mysql_native_password
+    ports:
+      - "3306:3306"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.tcp.routers.mysql.entrypoints=mysql"
+
+  snipeit:
+    image: snipe/snipe-it:v4.9.2
+    networks:
+      - web
+      - database
+    container_name: snipeit
+    env_file:
+      - .snipeit.env
+    depends_on:
+      - snipe-mysql
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.snipeit.rule=Host(`inventory.ideafast.eu`)"
+      - "traefik.http.routers.snipeit.entrypoints=websecure"
+      - "traefik.http.routers.snipeit.tls=true"
+      - "traefik.http.routers.snipeit.tls.certresolver=leresolver"
+
+volumes:
+  snipe_data:

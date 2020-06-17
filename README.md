@@ -40,7 +40,28 @@ cd ../instances
 cp zammad/.env .env
 
 docker-compose -f ./zammad/docker-compose.yml  -f docker-compose.yml up -d
+
+cd snipe-it/
+
+cp .snipeit.env.example .snipeit.env
+
+docker pull snipe/snipe-it:v4.9.2
+
+docker-compose up -d
+
+docker exec -it snipeit sh
+
+php artisan key:generate
+
+# Replace APP_KEY in .env with outputted value
+
+docker-compose up -d
 ```
+
+## Deploying/Testing Locally
+
+1. Disable HTTP/S redirects and SSL by temporarily [deleting the associated traefik config](https://github.com/ideafast/stack/blob/master/core/traefik.toml#L5-L10).
+2. Update traefik hosts, e.g. from `inventory.ideafast.eu` to `inventory.localhost` [see here](https://github.com/ideafast/stack/blob/master/instances/docker-compose.yml#L19).
 
 ### Notes
 
