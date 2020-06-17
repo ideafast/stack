@@ -12,6 +12,9 @@
   [entryPoints.postgres]
     address = ":5432"
 
+  [entryPoints.mysql]
+    address = ":3306"
+
 [certificatesResolvers.leresolver.acme]
   email = "support@ideafast.eu"
   storage = "acme.json"
