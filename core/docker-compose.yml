@@ -14,6 +14,8 @@ services:
     ports:
       - "80:80"
       - "443:443"
+    labels:
+      - "traefik.http.middlewares.bauth.basicauth.users=drew:$$apr1$$XOOG.BJt$$hCm3v3MiAzqXJLn9oQvkU1,farza:$$apr1$$YzdxnXKZ$$T3NipjpUZKJI6oBMmrL041"
     volumes:
       - "./traefik.toml:/traefik.toml"
       - "./acme.json:/acme.json"

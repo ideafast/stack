@@ -14,4 +14,5 @@ services:
     container_name: devicessupportdocsweb
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.snipeit.rule=Host(`docs.localhost`)"
+      - "traefik.http.routers.docs.rule=Host(`docs.localhost`)"
+      - "traefik.http.routers.docs.middlewares=bauth"
