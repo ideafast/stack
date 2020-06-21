@@ -41,6 +41,12 @@ cp zammad/.env .env
 
 docker-compose -f ./zammad/docker-compose.yml  -f docker-compose.yml up -d
 
+cd supportdocs/
+
+docker-compose up -d
+
+cd ../
+
 cd snipe-it/
 
 cp .snipeit.env.example .snipeit.env

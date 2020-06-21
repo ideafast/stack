@@ -1,0 +1,18 @@
+version: '3'
+
+networks:
+  web:
+    external: true
+
+services:
+  devicessupportdocsweb:
+    image: snipe/snipe-it:v4.9.2
+    networks:
+      - web
+    container_name: devicessupportdocsweb
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.snipeit.rule=Host(`docs.localhost`)"
+
+volumes:
+  snipe_data:
