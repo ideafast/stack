@@ -45,7 +45,7 @@ cd supportdocs/
 
 git clone https://github.com/ideafast/ideafast-devicesupportdocs-web.git docs
 
-./jekyll-build.sh
+chmod 755 jekyll-build.sh && ./jekyll-build.sh
 
 docker-compose up -d
 
