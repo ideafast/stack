@@ -2,4 +2,5 @@
 *.sw*
 *.json
 core/acme.json
+core/usersfile
 instances/supportdocs/docs

@@ -15,8 +15,9 @@ services:
       - "80:80"
       - "443:443"
     labels:
-      - "traefik.http.middlewares.bauth.basicauth.users=drew:$$apr1$$XOOG.BJt$$hCm3v3MiAzqXJLn9oQvkU1,farza:$$apr1$$YzdxnXKZ$$T3NipjpUZKJI6oBMmrL041"
+      - "traefik.http.middlewares.bauth.basicauth.usersfile=/usersfile"
     volumes:
       - "./traefik.toml:/traefik.toml"
       - "./acme.json:/acme.json"
+      - "./usersfile:/usersfile"
       - "/var/run/docker.sock:/var/run/docker.sock:ro"
