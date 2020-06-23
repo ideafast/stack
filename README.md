@@ -43,7 +43,7 @@ docker-compose -f ./zammad/docker-compose.yml  -f docker-compose.yml up -d
 
 cd supportdocs/
 
-# Copy repo from https://github.com/ideafast/ideafast-devicesupportdocs-web.git to this directory
+git clone https://github.com/ideafast/ideafast-devicesupportdocs-web.git docs
 
 docker-compose up -d
 

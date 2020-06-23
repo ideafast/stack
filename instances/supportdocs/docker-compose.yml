@@ -5,13 +5,13 @@ networks:
     external: true
 
 services:
-  jekyll:
-    image: bretfisher/jekyll-serve
+  docs:
+    image: nginx:alpine
     volumes:
-      - ./ideafast-devicesupportdocs-web:/site
+      - ./docs:/usr/share/nginx/html/
     networks:
       - web
-    container_name: devicessupportdocsweb
+    container_name: docs
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.docs.rule=Host(`docs.localhost`)"
