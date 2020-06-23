@@ -1,0 +1,23 @@
+version: '3'
+
+networks:
+  web:
+    external: true
+
+services:
+  mbs:
+    image: schmunk42/nginx-redirect
+    restart: unless-stopped
+    container_name: mbs
+    networks:
+      - web
+    environment:
+      - SERVER_REDIRECT=${SITE}
+      - SERVER_REDIRECT_PATH=${URL}
+    labels:
+      - "traefik.enable=true"
+      - "traefik.port=80"
+      - "traefik.http.routers.mbs.rule=Host(`${HOST}`)"
+      - "traefik.http.routers.mbs.entrypoints=websecure"
+      - "traefik.http.routers.mbs.tls=true"
+      - "traefik.http.routers.mbs.tls.certresolver=leresolver"
