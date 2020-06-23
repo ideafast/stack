@@ -8,6 +8,7 @@ services:
   docs:
     image: nginx:alpine
     volumes:
+      - ./conf:/etc/nginx/conf.d/
       - ./docs/_site:/usr/share/nginx/html/
     networks:
       - web
