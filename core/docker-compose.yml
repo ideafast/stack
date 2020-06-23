@@ -18,3 +18,7 @@ services:
       - "./traefik.toml:/traefik.toml"
       - "./acme.json:/acme.json"
       - "/var/run/docker.sock:/var/run/docker.sock:ro"
+    labels:
+      - "traefik.http.middlewares.csrfHeader.headers.customrequestheaders.X-Forwarded-Proto=https"
+      - "traefik.http.middlewares.csrfHeader.headers.customrequestheaders.X-Forwarded-Port=443"
+      - "traefik.http.middlewares.csrfHeader.headers.customrequestheaders.X-Forwarded-Ssl=on"
