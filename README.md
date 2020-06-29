@@ -30,6 +30,11 @@ cd core
 touch acme.json
 chmod 600 acme.json
 
+# Create usersfile (to create user/password, see https://docs.traefik.io/middlewares/basicauth/)
+
+touch usersfile
+vim usersfile
+
 docker-compose up -d
 
 # Start instances of services: zammad, snipeit, etc.
