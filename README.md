@@ -30,6 +30,11 @@ cd core
 touch acme.json
 chmod 600 acme.json
 
+# Create usersfile (to create user/password, see https://docs.traefik.io/middlewares/basicauth/)
+
+touch usersfile
+vim usersfile
+
 docker-compose up -d
 
 # Start instances of services: zammad, snipeit, etc.
@@ -40,6 +45,16 @@ cd ../instances
 cp zammad/.env .env
 
 docker-compose -f ./zammad/docker-compose.yml  -f docker-compose.yml up -d
+
+cd supportdocs/
+
+git clone https://github.com/ideafast/ideafast-devicesupportdocs-web.git docs
+
+chmod 755 jekyll-build.sh && ./jekyll-build.sh
+
+docker-compose up -d
+
+cd ../
 
 cd snipe-it/
 
