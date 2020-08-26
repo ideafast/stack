@@ -21,7 +21,7 @@ services:
       - "traefik.http.routers.mbs.entrypoints=websecure"
       - "traefik.http.routers.mbs.tls=true"
       - "traefik.http.routers.mbs.tls.certresolver=leresolver"
-  nk1:
+  zk1:
     image: schmunk42/nginx-redirect
     restart: unless-stopped
     container_name: zk1
