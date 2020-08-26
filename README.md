@@ -56,7 +56,13 @@ docker-compose up -d
 
 cd ../
 
-cd snipe-it/
+cd surveys/
+
+docker-compose up -d
+
+cd ../
+
+cd inventory/
 
 cp .snipeit.env.example .snipeit.env
 
