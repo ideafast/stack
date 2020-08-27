@@ -3,25 +3,22 @@ version: '3'
 networks:
   web:
     external: true
-  database:
-    external: true
 
 services:
   limesurvey:
     image: crramirez/limesurvey:latest
     networks:
       - web
-      - database
     volumes:
       - mysql:/var/lib/mysql
-      - upload:/app/upload
+      - upload:/surveys/upload
     container_name: limesurvey
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.snipeit.rule=Host(`surveys.ideafast.eu`)"
-      - "traefik.http.routers.snipeit.entrypoints=websecure"
-      - "traefik.http.routers.snipeit.tls=true"
-      - "traefik.http.routers.snipeit.tls.certresolver=leresolver"
+      - "traefik.http.routers.lime.rule=Host(`surveys.ideafast.eu`)"
+      - "traefik.http.routers.lime.entrypoints=websecure"
+      - "traefik.http.routers.lime.tls=true"
+      - "traefik.http.routers.lime.tls.certresolver=leresolver"
 
 volumes:
   mysql:
