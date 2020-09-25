@@ -1,6 +1,7 @@
 *.env
 *.sw*
 *.json
+*.DS_Store
 core/acme.json
 core/usersfile
 instances/supportdocs/docs

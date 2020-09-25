@@ -12,16 +12,16 @@ services:
     networks:
       - web
     environment:
-      - SERVER_REDIRECT=${SITE}
-      - SERVER_REDIRECT_PATH=${URL}
+      - SERVER_REDIRECT=${MBS_SITE}
+      - SERVER_REDIRECT_PATH=${MBS_URL}
     labels:
       - "traefik.enable=true"
       - "traefik.port=80"
-      - "traefik.http.routers.mbs.rule=Host(`${HOST}`)"
+      - "traefik.http.routers.mbs.rule=Host(`${MBS_HOST}`)"
       - "traefik.http.routers.mbs.entrypoints=websecure"
       - "traefik.http.routers.mbs.tls=true"
       - "traefik.http.routers.mbs.tls.certresolver=leresolver"
-  nk1:
+  zk1:
     image: schmunk42/nginx-redirect
     restart: unless-stopped
     container_name: zk1
