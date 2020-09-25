@@ -23,4 +23,3 @@ services:
       - "traefik.http.middlewares.csrfHeader.headers.customrequestheaders.X-Forwarded-Proto=https"
       - "traefik.http.middlewares.csrfHeader.headers.customrequestheaders.X-Forwarded-Port=443"
       - "traefik.http.middlewares.csrfHeader.headers.customrequestheaders.X-Forwarded-Ssl=on"
-      - "traefik.http.middlewares.bauth.basicauth.usersfile=/usersfile"
