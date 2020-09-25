@@ -21,3 +21,19 @@ services:
       - "traefik.http.routers.mbs.entrypoints=websecure"
       - "traefik.http.routers.mbs.tls=true"
       - "traefik.http.routers.mbs.tls.certresolver=leresolver"
+  nk1:
+    image: schmunk42/nginx-redirect
+    restart: unless-stopped
+    container_name: zk1
+    networks:
+      - web
+    environment:
+      - SERVER_REDIRECT=${ZK1_SITE}
+      - SERVER_REDIRECT_PATH=${ZK1_URL}
+    labels:
+      - "traefik.enable=true"
+      - "traefik.port=80"
+      - "traefik.http.routers.zk1.rule=Host(`${ZK1_HOST}`)"
+      - "traefik.http.routers.zk1.entrypoints=websecure"
+      - "traefik.http.routers.zk1.tls=true"
+      - "traefik.http.routers.zk1.tls.certresolver=leresolver"
