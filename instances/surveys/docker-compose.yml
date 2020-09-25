@@ -3,16 +3,20 @@ version: '3'
 networks:
   web:
     external: true
+  database:
+    external: true
 
 services:
   limesurvey:
+    container_name: limesurvey
     image: crramirez/limesurvey:latest
     networks:
       - web
+      - database
+    environment:
+      - "DISABLE_MYSQL=yes"
     volumes:
-      - mysql:/var/lib/mysql
       - upload:/surveys/upload
-    container_name: limesurvey
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.lime.rule=Host(`surveys.ideafast.eu`)"
@@ -21,5 +25,4 @@ services:
       - "traefik.http.routers.lime.tls.certresolver=leresolver"
 
 volumes:
-  mysql:
   upload:
