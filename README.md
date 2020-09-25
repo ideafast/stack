@@ -48,7 +48,7 @@ docker-compose -f ./zammad/docker-compose.yml  -f docker-compose.yml up -d
 
 cd supportdocs/
 
-git clone https://github.com/ideafast/ideafast-devicesupportdocs-web.git docs
+git clone git@github.com:ideafast/ideafast-devicesupportdocs-web.git docs
 
 chmod 755 jekyll-build.sh && ./jekyll-build.sh
 
