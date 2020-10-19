@@ -54,6 +54,14 @@ chmod 755 jekyll-build.sh && ./jekyll-build.sh
 
 docker-compose up -d
 
+cd middlewareservices/
+
+git clone git@github.com:ideafast/middleware-services.git
+
+chmod 755 docker-build.sh && ./docker-build.sh
+
+docker-compose up -d
+
 cd ../
 
 cd surveys/
