@@ -79,6 +79,13 @@ php artisan key:generate
 docker-compose up -d
 ```
 
+## Support Docs Redeployment
+
+The Support Docs are currently redeployed once a day using the crontab command from within the supportdocs folder
+```
+0 0 * * * ./redeploy-docs.sh
+```
+
 ## Deploying/Testing Locally
 
 1. Disable HTTP/S redirects and SSL by temporarily [deleting the associated traefik config](https://github.com/ideafast/stack/blob/master/core/traefik.toml#L5-L10).
