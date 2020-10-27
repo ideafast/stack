@@ -83,7 +83,7 @@ docker-compose up -d
 
 The Support Docs are currently redeployed once a day using the crontab command from within the supportdocs folder
 ```
-0 0 * * * ./redeploy-docs.sh
+0 0 * * * ~/stack/instances/supportdocs/redeploy-docs.sh
 ```
 
 ## Deploying/Testing Locally
