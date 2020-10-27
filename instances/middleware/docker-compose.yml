@@ -1,0 +1,36 @@
+version: '3.8'
+
+networks:
+  web:
+    external: true
+
+services:
+  consumer_live:
+    image: ideafast/middleware:0.0.1
+    networks:
+      - web
+    container_name: consumer_live
+    env_file:
+      - .consumer.live.env
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.consumer_live.rule=Host(`api.wp3.ideafast.eu`)"
+      - "traefik.http.routers.consumer_live.entrypoints=websecure"
+      - "traefik.http.routers.consumer_live.tls=true"
+      - "traefik.http.routers.consumer_live.tls.certresolver=leresolver"
+      - "traefik.http.routers.consumer_live.middlewares=bauth"
+
+  consumer_dev:
+    image: ideafast/middleware:0.0.1
+    networks:
+      - web
+    container_name: consumer_dev
+    env_file:
+      - .consumer.dev.env
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.consumer_dev.rule=Host(`dev.api.wp3.ideafast.eu`)"
+      - "traefik.http.routers.consumer_dev.entrypoints=websecure"
+      - "traefik.http.routers.consumer_dev.tls=true"
+      - "traefik.http.routers.consumer_dev.tls.certresolver=leresolver"
+      - "traefik.http.routers.consumer_dev.middlewares=bauth"
