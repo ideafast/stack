@@ -6,7 +6,7 @@ networks:
 
 services:
   consumer_live:
-    image: ideafast/middleware:0.0.1
+    image: ideafast/middleware:0.1.0
     networks:
       - web
     container_name: consumer_live
@@ -21,7 +21,7 @@ services:
       - "traefik.http.routers.consumer_live.middlewares=bauth"
 
   consumer_dev:
-    image: ideafast/middleware:0.0.1
+    image: ideafast/middleware:0.1.0
     networks:
       - web
     container_name: consumer_dev
