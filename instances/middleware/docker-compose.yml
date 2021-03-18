@@ -3,6 +3,8 @@ version: '3.8'
 networks:
   web:
     external: true
+  database:
+    external: true
 
 services:
   consumer_live:
@@ -30,3 +32,19 @@ services:
       - "traefik.http.routers.consumer_dev.rule=Host(`dev.api.wp3.ideafast.eu`)"
       - "traefik.http.routers.consumer_dev.entrypoints=websecure"
       - "traefik.http.routers.consumer_dev.tls.certresolver=leresolver"
+
+  mongodb:
+    container_name: mongo
+    image: mongo:4.4.3
+    command: [--auth]
+    networks:
+      - database
+    ports:
+      - 27017:27017
+    volumes:
+      - mongodb:/data/db
+    labels:
+      - "traefik.enable=true"
+
+volumes:
+  mongodb:
