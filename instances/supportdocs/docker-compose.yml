@@ -7,6 +7,7 @@ networks:
 services:
   docs:
     image: nginx:alpine
+    restart: unless-stopped
     volumes:
       - ./conf:/etc/nginx/conf.d/
       - ./docs/_site:/usr/share/nginx/html/

@@ -9,6 +9,7 @@ networks:
 services:
   consumer_live:
     image: ideafast/middleware:0.1.0
+    restart: unless-stopped
     networks:
       - web
     container_name: consumer_live
@@ -22,6 +23,7 @@ services:
 
   consumer_dev:
     image: ideafast/middleware:0.1.0
+    restart: unless-stopped
     networks:
       - web
     container_name: consumer_dev
@@ -36,6 +38,7 @@ services:
   mongodb:
     container_name: mongo
     image: mongo:4.4.3
+    restart: unless-stopped
     command: [--auth]
     networks:
       - database
