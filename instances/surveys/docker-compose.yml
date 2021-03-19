@@ -10,6 +10,7 @@ services:
   limesurvey:
     container_name: limesurvey
     image: crramirez/limesurvey:latest
+    restart: unless-stopped
     networks:
       - web
       - database
