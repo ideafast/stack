@@ -6,6 +6,7 @@ networks:
 
 services:
   docs:
+    container_name: docs
     image: nginx:alpine
     restart: unless-stopped
     volumes:
@@ -13,7 +14,6 @@ services:
       - ./docs/_site:/usr/share/nginx/html/
     networks:
       - web
-    container_name: docs
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.docs.rule=Host(`docs.ideafast.eu`)"

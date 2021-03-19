@@ -25,12 +25,12 @@ services:
       - "traefik.tcp.routers.mysql.entrypoints=mysql"
 
   snipeit:
+    container_name: snipeit
     image: snipe/snipe-it:v4.9.2
     restart: unless-stopped
     networks:
       - web
       - database
-    container_name: snipeit
     env_file:
       - .snipeit.env
     depends_on:
