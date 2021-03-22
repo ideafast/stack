@@ -46,7 +46,7 @@ services:
       - .dtransfer.env
     volumes:
       - ./local:/app/local/
-      - ./data:/app/data/
+      - data:/app/data/
   
   mongodb:
     container_name: mongo
@@ -64,3 +64,4 @@ services:
 
 volumes:
   mongodb:
+  data:
