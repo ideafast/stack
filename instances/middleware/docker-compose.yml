@@ -35,6 +35,16 @@ services:
       - "traefik.http.routers.consumer_dev.entrypoints=websecure"
       - "traefik.http.routers.consumer_dev.tls.certresolver=leresolver"
 
+  dtransfer_drm_dev:
+    container_name: dtransfer_drm_dev
+    image: ideafast/middleware-dtransfer:0.0.1-drm
+    networks:
+      - database
+    env_file:
+      - .dtransfer.env
+    volumes:
+      - ./local:/app/local/
+
   mongodb:
     container_name: mongo
     image: mongo:4.4.3
