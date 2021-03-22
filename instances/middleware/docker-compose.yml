@@ -25,6 +25,9 @@ services:
     container_name: consumer_dev
     image: ideafast/middleware-consumer:0.1.0
     restart: unless-stopped
+    # Required for linux
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     networks:
       - web
     env_file:
@@ -38,7 +41,9 @@ services:
   dtransfer_drm_dev:
     container_name: dtransfer_drm_dev
     image: ideafast/middleware-dtransfer:0.1.0-DRM
+    restart: unless-stopped
     networks:
+      - web
       - database
     env_file:
       - .dtransfer.env
