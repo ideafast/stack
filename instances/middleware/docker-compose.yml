@@ -25,9 +25,6 @@ services:
     container_name: consumer_dev
     image: ideafast/middleware-consumer:0.1.0
     restart: unless-stopped
-    # Required for linux
-    extra_hosts:
-      - "host.docker.internal:host-gateway"
     networks:
       - web
     env_file:
@@ -49,7 +46,8 @@ services:
       - .dtransfer.env
     volumes:
       - ./local:/app/local/
-
+      - ./data:/app/data/
+  
   mongodb:
     container_name: mongo
     image: mongo:4.4.3
