@@ -9,7 +9,7 @@ networks:
 services:
   consumer_live:
     container_name: consumer_live
-    image: ideafast/middleware:0.1.0
+    image: ideafast/middleware-consumer:0.1.0
     restart: unless-stopped
     networks:
       - web
@@ -23,7 +23,7 @@ services:
 
   consumer_dev:
     container_name: consumer_dev
-    image: ideafast/middleware:0.1.0
+    image: ideafast/middleware-consumer:0.1.0
     restart: unless-stopped
     networks:
       - web
@@ -37,7 +37,7 @@ services:
 
   dtransfer_drm_dev:
     container_name: dtransfer_drm_dev
-    image: ideafast/middleware-dtransfer:0.0.1-drm
+    image: ideafast/middleware-dtransfer:0.1.0-DRM
     networks:
       - database
     env_file:
