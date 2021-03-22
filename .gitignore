@@ -2,7 +2,7 @@
 *.sw*
 *.json
 *.DS_Store
-*/local/*
 core/acme.json
 core/usersfile
 instances/supportdocs/docs
+instances/middleware/local
