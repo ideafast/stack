@@ -29,11 +29,6 @@ services:
       - web
     env_file:
       - .consumer.dev.env
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.consumer_dev.rule=Host(`dev.api.wp3.ideafast.eu`)"
-      - "traefik.http.routers.consumer_dev.entrypoints=websecure"
-      - "traefik.http.routers.consumer_dev.tls.certresolver=leresolver"
 
   dtransfer_drm_dev:
     container_name: dtransfer_drm_dev
