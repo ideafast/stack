@@ -9,39 +9,47 @@ networks:
 services:
   consumer_live:
     container_name: consumer_live
-    image: ideafast/middleware-consumer:0.1.0
+    image: ideafast/middleware-consumer:0.1.0-DEV
     restart: unless-stopped
     networks:
       - web
     env_file:
       - .consumer.live.env
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.consumer_live.rule=Host(`api.wp3.ideafast.eu`)"
-      - "traefik.http.routers.consumer_live.entrypoints=websecure"
-      - "traefik.http.routers.consumer_live.tls.certresolver=leresolver"
 
   consumer_dev:
     container_name: consumer_dev
-    image: ideafast/middleware-consumer:0.1.0
+    image: ideafast/middleware-consumer:0.1.1-DEV
     restart: unless-stopped
     networks:
       - web
     env_file:
       - .consumer.dev.env
 
-  dtransfer_drm_dev:
-    container_name: dtransfer_drm_dev
-    image: ideafast/middleware-dtransfer:0.1.0-DRM
+  dtransfer_live:
+    container_name: dtransfer_live
+    image: ideafast/middleware-dtransfer:0.1.2-DEV
     restart: unless-stopped
     networks:
       - web
       - database
     env_file:
-      - .dtransfer.env
+      - .dtransfer.live.env
     volumes:
       - ./local:/app/local/
-      - ./data:/app/data/
+      - ./live/data:/app/data/
+
+  dtransfer_dev:
+    container_name: dtransfer_dev
+    image: ideafast/middleware-dtransfer:0.1.3-DEV
+    restart: unless-stopped
+    networks:
+      - web
+      - database
+    env_file:
+      - .dtransfer.dev.env
+    volumes:
+      - ./local:/app/local/
+      - ./dev/data:/app/data/
   
   mongodb:
     container_name: mongo

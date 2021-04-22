@@ -6,3 +6,6 @@ core/acme.json
 core/usersfile
 instances/supportdocs/docs
 instances/middleware/local
+data/
+local/
+*.log
