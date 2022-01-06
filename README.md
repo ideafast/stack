@@ -20,6 +20,7 @@ git submodule update --init --recursive
 ```
 docker network create web
 docker network create database
+docker network create ideafast-etl
 
 # Starting core services: traefik, sql, etc.
 

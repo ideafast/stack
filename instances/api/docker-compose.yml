@@ -1,0 +1,23 @@
+version: '3.5'
+
+networks:
+  ideafast-etl:
+    external: true
+  web:
+    external: true
+
+services:
+  api:
+    image: ideafast/wp3api:latest
+    restart: always
+    environment:
+      APP_MODULE: api.main:api
+      WP3API_AIRFLOW_PASS: ${WP3API_AIRFLOW_PASS}
+    networks:
+      - ideafast-etl
+      - web
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.api.rule=Host(`api.ideafast.eu`)"
+      - "traefik.http.routers.api.entrypoints=websecure"
+      - "traefik.http.routers.api.tls=true"
