@@ -9,7 +9,7 @@ networks:
 services:
   consumer_live:
     container_name: consumer_live
-    image: ideafast/middleware-consumer:0.1.0-DEV
+    image: ideafast/middleware-consumer:0.1.3-DEV-UCAM
     restart: unless-stopped
     networks:
       - web
@@ -18,7 +18,7 @@ services:
 
   consumer_dev:
     container_name: consumer_dev
-    image: ideafast/middleware-consumer:0.1.1-DEV
+    image: ideafast/middleware-consumer:0.1.3-DEV-UCAM
     restart: unless-stopped
     networks:
       - web
@@ -27,7 +27,7 @@ services:
 
   dtransfer_live:
     container_name: dtransfer_live
-    image: ideafast/middleware-dtransfer:0.1.2-DEV
+    image: ideafast/middleware-dtransfer:0.1.10-DEV
     restart: unless-stopped
     networks:
       - web
@@ -37,10 +37,10 @@ services:
     volumes:
       - ./local:/app/local/
       - ./live/data:/app/data/
-
+ 
   dtransfer_dev:
     container_name: dtransfer_dev
-    image: ideafast/middleware-dtransfer:0.1.3-DEV
+    image: ideafast/middleware-dtransfer:0.1.9-DEV
     restart: unless-stopped
     networks:
       - web
