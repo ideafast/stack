@@ -18,7 +18,7 @@ services:
       - web
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.api.rule=Host(`api.ideafast.eu`)"
+      - "traefik.http.routers.api.rule=Host(`api.wp3.ideafast.eu`)"
       - "traefik.http.routers.api.entrypoints=websecure"
       - "traefik.http.routers.api.tls=true"
       - "traefik.http.routers.lime.tls.certresolver=leresolver"
