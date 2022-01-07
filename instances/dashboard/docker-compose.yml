@@ -17,7 +17,7 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.docker.network=web"
-      - "traefik.http.routers.dashboard.rule=Host(`support.localhost`)"
+      - "traefik.http.routers.dashboard.rule=Host(`support.ideafast.eu`)"
       - "traefik.http.routers.dashboard.entrypoints=websecure"
       - "traefik.http.routers.dashboard.tls=true"
       - "traefik.http.routers.dashboard.tls.certresolver=leresolver"
