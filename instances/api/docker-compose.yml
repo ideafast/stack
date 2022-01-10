@@ -18,7 +18,11 @@ services:
       - web
     labels:
       - "traefik.enable=true"
+
+      # append next line to only allow specific endpoint for external requests
+      # "&& PathPrefix(`/docs/update`)"
       - "traefik.http.routers.api.rule=Host(`api.wp3.ideafast.eu`)"
+
       - "traefik.http.routers.api.entrypoints=websecure"
       - "traefik.http.routers.api.tls=true"
       - "traefik.http.routers.api.tls.certresolver=leresolver"
