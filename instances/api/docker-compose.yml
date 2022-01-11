@@ -19,7 +19,7 @@ services:
     labels:
       - "traefik.enable=true"
       # Only allow public traffic through the /docs/update endpoint
-      - "traefik.http.routers.api.rule=Host(`api.localhost`) &&
+      - "traefik.http.routers.api.rule=Host(`api.wp3.ideafast.eu`) &&
         PathPrefix(`/docs/update`)"
       - "traefik.http.routers.api.entrypoints=websecure"
       - "traefik.http.routers.api.tls=true"
