@@ -18,11 +18,13 @@ services:
       - web
     labels:
       - "traefik.enable=true"
-
-      # append next line to only allow specific endpoint for external requests
-      # "&& PathPrefix(`/docs/update`)"
-      - "traefik.http.routers.api.rule=Host(`api.wp3.ideafast.eu`)"
-
+      # Only allow public traffic through the /docs/update endpoint
+      - "traefik.http.routers.api.rule=Host(`api.localhost`) &&
+        PathPrefix(`/docs/update`)"
       - "traefik.http.routers.api.entrypoints=websecure"
       - "traefik.http.routers.api.tls=true"
       - "traefik.http.routers.api.tls.certresolver=leresolver"
+      # enforce basic auth to access this endpoint publically
+      - "traefik.http.routers.api.middlewares=bauth"
+      - "traefik.http.middlewares.bauth.basicauth.users=github_docs:${GITHUB_DO\
+        CS_ENCRYPTPASS}"
