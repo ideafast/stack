@@ -25,6 +25,6 @@ services:
       - "traefik.http.routers.api.tls=true"
       - "traefik.http.routers.api.tls.certresolver=leresolver"
       # enforce basic auth to access this endpoint publically
-      - "traefik.http.routers.api.middlewares=bauth"
-      - "traefik.http.middlewares.bauth.basicauth.users=github_docs:${GITHUB_DO\
-        CS_ENCRYPTPASS}"
+      - "traefik.http.routers.api.middlewares=bauth_api"
+      - "traefik.http.middlewares.bauth_api.basicauth.users=github_docs:${GITHU\
+        B_DOCS_ENCRYPTPASS}"
