@@ -9,3 +9,6 @@ instances/middleware/local
 data/
 local/
 *.log
+
+instances/api/ssh/*
+!instances/api/ssh/.gitkeep
