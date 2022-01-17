@@ -6,10 +6,8 @@ There are a couple of services defined here:
 - [instances](./instances) are the instances of services we run, e.g. zammad.
 
 
-[Zammad](https://github.com/zammad/zammad-docker-compose) is used as a
-submodule to simplify working with their compose file. When you first download
-the repo the `/instances/zammad` folder will be empty and you'll need to
-initialise it:
+The [IDEAFAST/ETL pipeline](https://github.com/ideafast/ideafast-etl) and [Zammad](https://github.com/zammad/zammad-docker-compose) are used as a
+submodule to simplify working with their compose file. When you first download the repo the `/instances/pipeline/ideafast_etl` and `/instances/zammad` folders will be empty and you'll need to initialise it:
 
 ```
 git submodule update --init --recursive
@@ -54,6 +52,20 @@ git clone git@github.com:ideafast/ideafast-devicesupportdocs-web.git docs
 chmod 755 jekyll-build.sh && ./jekyll-build.sh
 
 docker-compose up -d
+
+cd ../
+
+cd pipeline/
+
+cp .env.example .env
+cp /init/connections.yaml.example /init/connections.yaml
+cp /init/variables.json.example /init/variables.json
+
+# change the above env and init variables as needed
+# then, start the docker container with the command
+
+#! /usr/bin/env bash
+docker-compose -f ideafast_etl/docker-compose.yaml --env-file .env -f docker-compose.yaml up -d
 
 cd ../
 
