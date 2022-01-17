@@ -17,10 +17,10 @@ services:
       - ideafast-etl
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.api.rule=Host(`pipeline.wp3.ideafast.eu`)"
-      - "traefik.http.routers.api.entrypoints=websecure"
-      - "traefik.http.routers.api.tls=true"
-      - "traefik.http.routers.api.tls.certresolver=leresolver"
+      - "traefik.http.routers.pipeline.rule=Host(`pipeline.wp3.ideafast.eu`)"
+      - "traefik.http.routers.pipeline.entrypoints=websecure"
+      - "traefik.http.routers.pipeline.tls=true"
+      - "traefik.http.routers.pipeline.tls.certresolver=leresolver"
 
   ideafast-init:
     volumes:
