@@ -21,7 +21,8 @@ services:
       - ./ssh:/root/.ssh
     labels:
       - "traefik.enable=true"
-      # TODO: Uncomment to only allow public traffic through the /docs/update endpoint
+      # TODO: replace rule with commented below to restrict traffic through the /docs/update endpoint
+      # TODO: remove fcid auth once frontend is deployed locally
       # - "traefik.http.routers.api.rule=Host(`api.wp3.ideafast.eu`) && PathPrefix(`/docs/update`)"
       - "traefik.http.routers.api.rule=Host(`api.wp3.ideafast.eu`)"
       - "traefik.http.routers.api.entrypoints=websecure"
