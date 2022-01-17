@@ -63,6 +63,12 @@ docker-compose up -d
 
 cd ../
 
+cd api/
+
+docker-compose up -d
+
+cd ../
+
 cd inventory/
 
 cp .snipeit.env.example .snipeit.env
