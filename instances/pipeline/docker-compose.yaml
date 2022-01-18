@@ -1,0 +1,28 @@
+version: '3.5'
+
+networks:
+  web:
+    external: true
+  ideafast-etl:
+    name: ideafast-etl
+    external: true
+
+services:
+  # ideafast-etl is a submodule. These settings are used to override for
+  # the stack purpose
+
+  airflow-webserver:
+    networks:
+      - web
+      - ideafast-etl
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.pipeline.rule=Host(`pipeline.wp3.ideafast.eu`)"
+      - "traefik.http.routers.pipeline.entrypoints=websecure"
+      - "traefik.http.routers.pipeline.tls=true"
+      - "traefik.http.routers.pipeline.tls.certresolver=leresolver"
+
+  ideafast-init:
+    volumes:
+      # use local init values  
+      - ../init:/opt/airflow/init/

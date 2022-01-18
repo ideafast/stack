@@ -6,6 +6,8 @@ core/acme.json
 core/usersfile
 instances/supportdocs/docs
 instances/middleware/local
+instances/pipeline/init/connections.yaml
+instances/pipeline/init/variables.json
 data/
 local/
 *.log
