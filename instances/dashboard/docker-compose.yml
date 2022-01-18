@@ -1,0 +1,23 @@
+version: '2.4'
+
+networks:
+  web:
+    external: true
+
+services:
+  docs:
+    container_name: dashboard
+    image: nginx:alpine
+    restart: unless-stopped
+    volumes:
+      - ./conf:/etc/nginx/conf.d/
+      - ./docs:/usr/share/nginx/html/
+    networks:
+      - web
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=web"
+      - "traefik.http.routers.dashboard.rule=Host(`support.ideafast.eu`)"
+      - "traefik.http.routers.dashboard.entrypoints=websecure"
+      - "traefik.http.routers.dashboard.tls=true"
+      - "traefik.http.routers.dashboard.tls.certresolver=leresolver"

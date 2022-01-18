@@ -1,0 +1,34 @@
+version: '3.5'
+
+networks:
+  ideafast-etl:
+    external: true
+  web:
+    external: true
+
+services:
+  api:
+    image: ideafast/wp3api:latest
+    restart: always
+    environment:
+      APP_MODULE: api.main:api
+    env_file:
+      - .env
+    networks:
+      - ideafast-etl
+      - web
+    volumes:
+      - ./ssh:/root/.ssh
+    labels:
+      - "traefik.enable=true"
+      # TODO: replace rule with commented below to restrict traffic through the /docs/update endpoint
+      # TODO: remove fcid auth once frontend is deployed locally
+      # - "traefik.http.routers.api.rule=Host(`api.wp3.ideafast.eu`) && PathPrefix(`/docs/update`)"
+      - "traefik.http.routers.api.rule=Host(`api.wp3.ideafast.eu`)"
+      - "traefik.http.routers.api.entrypoints=websecure"
+      - "traefik.http.routers.api.tls=true"
+      - "traefik.http.routers.api.tls.certresolver=leresolver"
+      # enforce basic auth to access this endpoint publically
+      - "traefik.http.routers.api.middlewares=bauth_api"
+      - "traefik.http.middlewares.bauth_api.basicauth.users=github_docs:${GITHU\
+        B_DOCS_ENCRYPTPASS},wp3_fcid:${FCID_TEMP_API_ACCESS}"
