@@ -31,4 +31,7 @@ services:
       # # enforce basic auth to access this endpoint publically
       - "traefik.http.routers.api.middlewares=bauth_api, api_headers"
       - "traefik.http.middlewares.bauth_api.basicauth.users=github_docs:${GITHUB_DOCS_ENCRYPTPASS},wp3_fcid:${FCID_TEMP_API_ACCESS}"
+      - "traefik.http.middlewares.api_headers.headers.accesscontrolallowmethods=GET"
       - "traefik.http.middlewares.api_headers.headers.accesscontrolalloworigin=*"
+      - "traefik.http.middlewares.api_headers.headers.accesscontrolmaxage=100"
+      - "traefik.http.middlewares.api_headers.headers.addvaryheader=true"
