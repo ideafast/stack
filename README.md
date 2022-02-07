@@ -56,7 +56,7 @@ docker-compose up -d
 
 ### Submodules and dependencies
 
-The [IDEAFAST/ETL pipeline](https://github.com/ideafast/ideafast-etl) and [Zammad](https://github.com/zammad/zammad-docker-compose) are used as a submodule to simplify working with their compose file. When you first download the repo the `/instances/pipeline/ideafast_etl` and `/instances/zammad` folders will be empty and you'll need to initialise it:
+The [IDEAFAST/ETL pipeline](https://github.com/ideafast/ideafast-etl) is used as a submodule to simplify working with their compose file. When you first download the repo the `/instances/pipeline/ideafast_etl` folder will be empty and you'll need to initialise it:
 
 ```shell
 git submodule update --init --recursive
@@ -173,22 +173,6 @@ If you want to update any environmental variables, connections or variables (as 
 
 ```shell
 git submodule update --remote
-```
-
-### Redirects
-
-> Once the FS finishes, the redirects will be deprecated. 
-
-### Support
-
-> Once the FS finishes, the support system will be deprecated. 
-
-Set up can be achieved as follows _(instructions taken from prior documentation)_:
-
-```
-# If no .env exists copy/edit zammad's as a base. see /instances/.env.example
-cp zammad/.env .env
-docker-compose -f ./zammad/docker-compose.yml  -f docker-compose.yml up -d
 ```
 
 ### Support Documentation
